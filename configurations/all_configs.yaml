@@ -1,0 +1,44 @@
+project:
+  name: "artist_lora"
+  seed: 42
+
+model:
+  base_model: "runwayml/stable-diffusion-v1-5"
+  dtype: "fp16"
+  device: "cuda"
+
+paths:
+  dataset_dir: "./artist_images"
+  model_save_dir: "./model_save"
+  image_out_dir: "./output_images"
+  cache_dir: "./.cache"
+
+LORA_CFG:
+  rank: 16
+  alpha: 32
+  target_modules:
+    - to_q
+    - to_k
+    - to_v
+    - to_out.0
+
+training:
+  batch_size: 2
+  gradient_accumulation_steps: 1
+  learning_rate: 1e-4
+  max_steps: 10000
+  save_every: 500
+  sample_every: 1000
+
+sampling:
+  prompt: "monet_style, impressionist landscape painting"
+  num_inference_steps: 30
+  guidance_scale: 4.5
+
+prompt:
+  instance:
+    - "monet_style, impressionist landscape painting, soft pastel colors, harmonious color palette, atmospheric light"
+    - "monet_style, impressionist landscape painting, soft pastel colors, harmonious color palette, atmospheric light"
+    - "monet_style, impressionist painting, pastel colors, natural lighting"
+    - "monet_style, impressionist landscape, loose brushwork, atmospheric perspective"
+  class: "a painting"
