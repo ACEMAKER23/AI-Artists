@@ -29,7 +29,8 @@ Thumbs.db
 *.jpg
 *.png
 
-!*about_the_folder*
-
 #Ignore all previsouly saved model
 model_save/*
+
+#Include all folder that stores input and output data
+!*about_the_folder*
