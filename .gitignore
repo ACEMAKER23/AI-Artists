@@ -24,3 +24,9 @@ Thumbs.db
 # Cache / temporary folders
 .cache/
 *.log
+
+# Ignore all image data
+*.jpg
+*.png
+
+!*.placeholder
