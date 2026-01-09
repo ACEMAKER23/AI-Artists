@@ -29,4 +29,7 @@ Thumbs.db
 *.jpg
 *.png
 
-!*.placeholder
+!*about_the_folder*
+
+#Ignore all previsouly saved model
+model_save/*
